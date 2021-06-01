@@ -18,6 +18,15 @@ jobs:
     displayName: 'Run a one-line script'
 
 - job: job2
+  dependsOn: job1
   steps:
-  - script: echo Hello, world, second run,changed!
+  - script: echo Hello, world, job2!
+    displayName: 'Run a one-line script'
+    condition: 
+
+
+- job: job3
+  dependsOn: job2
+  steps:
+  - script: echo Hello, world, Job3
     displayName: 'Run a one-line script'
