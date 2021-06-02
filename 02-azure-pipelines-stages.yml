@@ -19,23 +19,18 @@ stages:
     steps: 
     - bash: echo second job
 - stage: DevDeploy
-  - dependsOn: build
-    jobs:
-    - job: DevDeployJob
-      steps: 
-      - bash: echo Dev  job
+  jobs:
+  - job: DevDeployJob
+    steps: 
+    - bash: echo Dev  job
 - stage: QADeploy
-  - dependsOn: build
-    jobs:
-    - job: QA_env_deploy
-      steps: 
-      - bash: echo QA deploy job
+  jobs:
+  - job: QA_env_deploy
+    steps: 
+    - bash: echo QA deploy job
 - stage: prodDeploy
-  - dependsOn:
-    - DevDeploy
-    - QADeploy
-    jobs:
-    - job: Prod_Deploy
-      steps: 
-      - bash: echo Prod env job
+  jobs:
+  - job: Prod_Deploy
+    steps: 
+    - bash: echo Prod env job
 
